@@ -14,7 +14,7 @@ int main(){
 
   //break the string up into words
   char *word = strtok(line, " ");
-  int i = 0;
+ 
   while (word) {
 	  
 	if(strcmp(line, "exit\n") == 0){
