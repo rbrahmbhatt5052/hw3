@@ -21,17 +21,11 @@ int main(){
 		break;
 	
 	}
-    printf("word: %s\n", word);
-    //copy a word to the arg array
-    strcpy(argsarray[i], word);
+
     //get next word
     word = strtok(NULL, " ");
     i = i + 1;
   }
 
-  //print out our array
-  int j=0; 
-  for (;j<i;j++){
-    printf("argsarray[%d]: %s\n", j, argsarray[j]);
-  }  
+ 
 }
