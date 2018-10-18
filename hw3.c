@@ -1,56 +1,37 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
+#include <string.h>
 
-void loop(void){
+int main(){
+
+  //create some space for our strings
+  char line[500];
+  char argsarray[20][100];
+
+  //print prompt
+  printf("CS361 >");
+  //read line from terminal
+  fgets(line, 500, stdin);
+
+  //break the string up into words
+  char *word = strtok(line, " ");
+  int i = 0;
+  while (word) {
+	  
+	if(strcmp(line, "exit\n") == 0){
+		break;
 	
-	char * line;
-	char ** args;
-	int status;     // for storing execptions 
+	}
+    printf("word: %s\n", word);
+    //copy a word to the arg array
+    strcpy(argsarray[i], word);
+    //get next word
+    word = strtok(NULL, " ");
+    i = i + 1;
+  }
 
-//read the commands entered by the user 
-// it will parse the commands computer can understand the commands 
-// execute the commands 
-
-	do{
-	printf("%s","CS361 >");
-	line = read();	
-
-// arguments is an array of strings 	
-
-	args = parse(line); 
-	status = execute(args);
-
-// free the memory 
-
-	free(line);
-	free(args);
-
-
-
-	}while(status);
-
-
-
+  //print out our array
+  int j=0; 
+  for (;j<i;j++){
+    printf("argsarray[%d]: %s\n", j, argsarray[j]);
+  }  
 }
-
-
-
-int main(int argc, char** argv){
-
-// load the comfiguration
-
-
-// run an REPL Loop: reads executes and prints the outputs
-
-	loop();
-
-
-
-// Perform any shutdown cleanup
-	return 0;
-
-
-}
-
-
